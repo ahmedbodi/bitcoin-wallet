@@ -66,6 +66,7 @@ import com.google.bitcoin.store.UnreadableWalletException;
 import com.google.bitcoin.store.WalletProtobufSerializer;
 import com.google.bitcoin.utils.Threading;
 import com.google.bitcoin.wallet.WalletFiles;
+import com.google.bitcoin.core.*
 
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.service.BlockchainServiceImpl;
@@ -126,7 +127,7 @@ public class WalletApplication extends Application
 			@Override
 			public void uncaughtException(final Thread thread, final Throwable throwable)
 			{
-				log.info("bitcoinj uncaught exception", throwable);
+				log.info(CoinDefinition.coinName + " uncaught exception", throwable);
 				CrashReporter.saveBackgroundTrace(throwable, packageInfo);
 			}
 		};
