@@ -26,6 +26,7 @@ import android.text.format.DateUtils;
 import com.google.bitcoin.core.NetworkParameters;
 import com.google.bitcoin.params.MainNetParams;
 import com.google.bitcoin.params.TestNet3Params;
+import com.google.bitcoin.core.CoinDefinition;
 
 import de.schildbach.wallet_test.R;
 
@@ -46,28 +47,28 @@ public class Constants
 	public static final String WALLET_KEY_BACKUP_BASE58 = "key-backup-base58" + FILENAME_NETWORK_SUFFIX;
 
 	public static final File EXTERNAL_WALLET_BACKUP_DIR = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-	public static final String EXTERNAL_WALLET_KEY_BACKUP = "bitcoin-wallet-keys" + FILENAME_NETWORK_SUFFIX;
+	public static final String EXTERNAL_WALLET_KEY_BACKUP = "CoinDefinition.coinName +"-wallet-keys" + FILENAME_NETWORK_SUFFIX;
 
 	public static final String BLOCKCHAIN_FILENAME = "blockchain" + FILENAME_NETWORK_SUFFIX;
 
 	public static final String CHECKPOINTS_FILENAME = "checkpoints" + FILENAME_NETWORK_SUFFIX;
 
-	private static final String BLOCKEXPLORER_BASE_URL_PROD = "https://blockexplorer.com/";
-	private static final String BLOCKEXPLORER_BASE_URL_TEST = "https://blockexplorer.com/testnet/";
+	private static final String BLOCKEXPLORER_BASE_URL_PROD = CoinDefinition.BLOCKEXPLORER_BASE_URL_PROD;
+	private static final String BLOCKEXPLORER_BASE_URL_TEST = CoinDefinition.BLOCKEXPLORER_BASE_URL_TEST;
 	public static final String BLOCKEXPLORER_BASE_URL = NETWORK_PARAMETERS.getId().equals(NetworkParameters.ID_MAINNET) ? BLOCKEXPLORER_BASE_URL_PROD
 			: BLOCKEXPLORER_BASE_URL_TEST;
 
-	public static final String MIMETYPE_TRANSACTION = "application/x-btctx";
+	public static final String MIMETYPE_TRANSACTION = "application/x-" + CoinDefinition.coinTicker.toLowerCase() + "tx";
 
 	public static final int MAX_NUM_CONFIRMATIONS = 7;
-	public static final String USER_AGENT = "Bitcoin Wallet";
+	public static final String USER_AGENT = CoinDefinition.coinName +" Wallet";
 	public static final String DEFAULT_EXCHANGE_CURRENCY = "USD";
 	public static final int WALLET_OPERATION_STACK_SIZE = 256 * 1024;
 	public static final long BLOCKCHAIN_STATE_BROADCAST_THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
 	public static final long BLOCKCHAIN_UPTODATE_THRESHOLD_MS = DateUtils.HOUR_IN_MILLIS;
 
-	public static final String CURRENCY_CODE_BTC = "BTC";
-	public static final String CURRENCY_CODE_MBTC = "mBTC";
+	public static final String CURRENCY_CODE_BTC =  CoinDefinition.coinTicker;
+	public static final String CURRENCY_CODE_MBTC = "m" + CoinDefinition.coinTicker;
 	public static final char CHAR_HAIR_SPACE = '\u200a';
 	public static final char CHAR_THIN_SPACE = '\u2009';
 	public static final char CHAR_ALMOST_EQUAL_TO = '\u2248';
@@ -81,22 +82,22 @@ public class Constants
 	public static final int MBTC_MAX_PRECISION = 5;
 	public static final int LOCAL_PRECISION = 4;
 
-	public static final String DONATION_ADDRESS = "1HkX6X8EakdsgAysL93oKrWiXGPbFiG1xV";
-	public static final String REPORT_EMAIL = "wallet@schildbach.de";
-	public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
-	public static final String REPORT_SUBJECT_CRASH = "Crash report";
+	public static final String DONATION_ADDRESS = CoinDefinition.DONATION_ADDRESS;
+	public static final String REPORT_EMAIL = "ahmedbodi@crypto-expert.com";
+	public static final String REPORT_SUBJECT_ISSUE = CoinDefinition.DONATION_ADDRESS + "Reported issue";
+	public static final String REPORT_SUBJECT_CRASH = CoinDefinition.DONATION_ADDRESS + "Crash report";
 
 	public static final String LICENSE_URL = "http://www.gnu.org/licenses/gpl-3.0.txt";
-	public static final String SOURCE_URL = "https://github.com/schildbach/bitcoin-wallet";
-	public static final String BINARY_URL = "http://code.google.com/p/bitcoin-wallet/downloads/list";
+	public static final String SOURCE_URL = "https://github.com/ahmedbodi";
+	public static final String BINARY_URL = "http://github.com/ahmedbodi";
 	public static final String CREDITS_BITCOINJ_URL = "http://code.google.com/p/bitcoinj/";
 	public static final String CREDITS_ZXING_URL = "http://code.google.com/p/zxing/";
 	public static final String CREDITS_ICON_URL = "https://bitcointalk.org/index.php?action=profile;u=2062";
-	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/bitcoin_wallet";
+	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/CryptoExpert";
 	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/andreas.schildbach";
 	public static final String MARKET_APP_URL = "market://details?id=%s";
 	public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
-	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Andreas Schildbach\"";
+	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"CryptoExpert\"";
 
 	public static final String VERSION_URL = "http://wallet.schildbach.de/version";
 	public static final int HTTP_TIMEOUT_MS = 15 * (int) DateUtils.SECOND_IN_MILLIS;
@@ -114,7 +115,7 @@ public class Constants
 	public static final String PREFS_KEY_TRUSTED_PEER_ONLY = "trusted_peer_only";
 	public static final String PREFS_KEY_LABS_BLUETOOTH_OFFLINE_TRANSACTIONS = "labs_bluetooth_offline_transactions";
 	public static final String PREFS_KEY_BTC_PRECISION = "btc_precision";
-	public static final String PREFS_DEFAULT_BTC_PRECISION = "4";
+	public static final String PREFS_DEFAULT_BTC_PRECISION = "8";
 	public static final String PREFS_KEY_DISCLAIMER = "disclaimer";
 
 	public static final long LAST_USAGE_THRESHOLD_JUST_MS = DateUtils.HOUR_IN_MILLIS;
